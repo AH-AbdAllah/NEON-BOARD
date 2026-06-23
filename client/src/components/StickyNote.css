@@ -1,0 +1,303 @@
+/* Sticky Note Styles */
+.sticky-note-wrapper {
+  /* Positioned absolutely via JS translation */
+}
+
+.sticky-note-card {
+  position: relative;
+  width: 220px;
+  height: 180px; /* Default height */
+  border-radius: 12px;
+  display: flex;
+  flex-direction: column;
+  padding: 0.75rem;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+  cursor: grab;
+  animation: flyInNote 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  border: 1.5px solid transparent;
+  direction: ltr; /* English text default */
+  overflow: hidden; /* Hide overflow when note content grows too large */
+}
+
+.sticky-note-card:active {
+  cursor: grabbing;
+}
+
+/* Color Themes */
+/* 1. Neon Green */
+.sticky-note-card.neon-green {
+  background-color: var(--color-neon-green);
+  color: #000000 !important;
+  box-shadow: 0 10px 25px rgba(57, 255, 20, 0.15), 0 0 15px rgba(57, 255, 20, 0.1);
+}
+.sticky-note-card.neon-green:hover, .sticky-note-card.neon-green:active {
+  box-shadow: 0 12px 30px rgba(57, 255, 20, 0.3), 0 0 20px rgba(57, 255, 20, 0.2);
+}
+
+/* 2. Emerald */
+.sticky-note-card.emerald {
+  background-color: var(--color-forest);
+  color: #ffffff !important;
+  border-color: rgba(16, 185, 129, 0.3);
+  box-shadow: 0 10px 25px rgba(16, 185, 129, 0.1), 0 0 10px rgba(16, 185, 129, 0.05);
+}
+.sticky-note-card.emerald:hover, .sticky-note-card.emerald:active {
+  box-shadow: 0 12px 30px rgba(16, 185, 129, 0.25), 0 0 15px rgba(16, 185, 129, 0.15);
+}
+
+/* 3. Mint */
+.sticky-note-card.mint {
+  background-color: #a7f3d0;
+  color: #064e3b !important;
+  box-shadow: 0 10px 25px rgba(167, 243, 208, 0.15);
+}
+.sticky-note-card.mint:hover, .sticky-note-card.mint:active {
+  box-shadow: 0 12px 30px rgba(167, 243, 208, 0.3);
+}
+
+/* 4. Obsidian */
+.sticky-note-card.obsidian {
+  background-color: #0d0d11;
+  color: #f8fafc !important;
+  border: 1.5px solid rgba(57, 255, 20, 0.25);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.6), 0 0 15px rgba(57, 255, 20, 0.05);
+}
+.sticky-note-card.obsidian:hover, .sticky-note-card.obsidian:active {
+  border-color: var(--color-neon-green);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.7), 0 0 20px rgba(57, 255, 20, 0.15);
+}
+
+/* 5. Charcoal */
+.sticky-note-card.charcoal {
+  background-color: #1e293b;
+  color: #f1f5f9 !important;
+  border-color: rgba(255, 255, 255, 0.15);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+}
+.sticky-note-card.charcoal:hover, .sticky-note-card.charcoal:active {
+  border-color: rgba(255, 255, 255, 0.3);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.6);
+}
+
+/* Note Header */
+.note-header {
+  height: 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+  padding-bottom: 0.35rem;
+  margin-bottom: 0.5rem;
+}
+
+.sticky-note-card.obsidian .note-header,
+.sticky-note-card.emerald .note-header,
+.sticky-note-card.charcoal .note-header {
+  border-bottom-color: rgba(255, 255, 255, 0.08);
+}
+
+.drag-handle-dots {
+  display: flex;
+  gap: 2px;
+}
+
+.drag-handle-dots span {
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background-color: rgba(0, 0, 0, 0.25);
+}
+
+.sticky-note-card.obsidian .drag-handle-dots span,
+.sticky-note-card.emerald .drag-handle-dots span,
+.sticky-note-card.charcoal .drag-handle-dots span {
+  background-color: rgba(255, 255, 255, 0.3);
+}
+
+/* Note Toolbar */
+.note-toolbar {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+
+.sticky-note-card:hover .note-toolbar {
+  opacity: 1;
+}
+
+.color-selectors {
+  display: flex;
+  gap: 3px;
+}
+
+.color-dot-btn {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  border: 1px solid rgba(0, 0, 0, 0.25);
+  cursor: pointer;
+  padding: 0;
+  transition: transform 0.15s ease;
+}
+
+.sticky-note-card.obsidian .color-dot-btn,
+.sticky-note-card.emerald .color-dot-btn,
+.sticky-note-card.charcoal .color-dot-btn {
+  border-color: rgba(255, 255, 255, 0.3);
+}
+
+.color-dot-btn:hover {
+  transform: scale(1.3);
+}
+
+.color-dot-btn.active {
+  box-shadow: 0 0 0 1.5px rgba(255, 255, 255, 0.8);
+}
+
+/* Color Dot Backgrounds */
+.color-dot-btn.neon-green { background-color: var(--color-neon-green); }
+.color-dot-btn.emerald { background-color: var(--color-forest); }
+.color-dot-btn.mint { background-color: #a7f3d0; }
+.color-dot-btn.obsidian { background-color: #0d0d11; }
+.color-dot-btn.charcoal { background-color: #1e293b; }
+
+.note-delete-btn {
+  background: transparent;
+  border: none;
+  font-size: 0.8rem;
+  cursor: pointer;
+  padding: 0;
+  color: rgba(0, 0, 0, 0.4);
+  transition: color 0.15s ease, transform 0.15s ease;
+}
+
+.sticky-note-card.obsidian .note-delete-btn,
+.sticky-note-card.emerald .note-delete-btn,
+.sticky-note-card.charcoal .note-delete-btn {
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.note-delete-btn:hover {
+  color: #ef4444 !important;
+  transform: scale(1.15);
+}
+
+/* Note Body */
+.note-body {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.note-text-display {
+  font-size: 0.92rem;
+  line-height: 1.5;
+  white-space: pre-wrap;
+  word-break: break-word;
+  user-select: text;
+  flex-grow: 1;
+  overflow-y: auto;
+}
+
+.note-editor {
+  flex-grow: 1;
+  width: 100%;
+  height: 100%;
+  background: transparent;
+  border: none;
+  outline: none;
+  font-family: var(--font-body);
+  font-size: 0.92rem;
+  line-height: 1.5;
+  resize: none;
+  color: inherit;
+  text-align: left;
+  overflow-y: auto;
+}
+
+/* Note Footer */
+.note-footer {
+  margin-top: 0.5rem;
+  display: flex;
+  justify-content: flex-end;
+  font-size: 0.72rem;
+  font-weight: 500;
+  opacity: 0.6;
+  border-top: 1px solid rgba(0, 0, 0, 0.04);
+  padding-top: 0.35rem;
+  margin-bottom: 0.25rem;
+}
+
+.sticky-note-card.obsidian .note-footer,
+.sticky-note-card.emerald .note-footer,
+.sticky-note-card.charcoal .note-footer {
+  border-top-color: rgba(255, 255, 255, 0.06);
+}
+
+.editor-name {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 150px;
+}
+
+/* Placeholder Color Styles based on note color contrast */
+.sticky-note-card.obsidian .note-editor::placeholder,
+.sticky-note-card.emerald .note-editor::placeholder,
+.sticky-note-card.charcoal .note-editor::placeholder {
+  color: rgba(255, 255, 255, 0.35);
+}
+.sticky-note-card.neon-green .note-editor::placeholder,
+.sticky-note-card.mint .note-editor::placeholder {
+  color: rgba(0, 0, 0, 0.4);
+}
+
+/* Optimistic Note Styling */
+.sticky-note-card.optimistic {
+  opacity: 0.55;
+  pointer-events: none;
+  cursor: wait;
+}
+
+/* Resize Handle Style - Large interactive hit area, small visual lines */
+.note-resize-handle {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 20px;
+  height: 20px;
+  cursor: se-resize;
+  z-index: 10;
+  background: transparent;
+}
+
+.note-resize-handle::after {
+  content: "";
+  position: absolute;
+  bottom: 4px;
+  right: 4px;
+  width: 8px;
+  height: 8px;
+  border-bottom: 2px solid rgba(0, 0, 0, 0.25);
+  border-right: 2px solid rgba(0, 0, 0, 0.25);
+  opacity: 0.4;
+  transition: opacity 0.2s ease, border-color 0.2s ease;
+  pointer-events: none; /* Let handle click-through to parent resize wrapper */
+}
+
+.sticky-note-card.obsidian .note-resize-handle::after,
+.sticky-note-card.emerald .note-resize-handle::after,
+.sticky-note-card.charcoal .note-resize-handle::after {
+  border-bottom-color: rgba(255, 255, 255, 0.4);
+  border-right-color: rgba(255, 255, 255, 0.4);
+}
+
+.note-resize-handle:hover::after {
+  opacity: 1;
+  border-bottom-color: var(--color-neon-green) !important;
+  border-right-color: var(--color-neon-green) !important;
+}
+

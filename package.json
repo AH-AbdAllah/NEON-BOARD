@@ -1,0 +1,19 @@
+{
+  "name": "collaborative-whiteboard",
+  "version": "1.0.0",
+  "description": "Collaborative Real-time project whiteboard using React, Node.js, and Google Firestore",
+  "type": "module",
+  "scripts": {
+    "install:server": "npm install --prefix server",
+    "install:client": "npm install --prefix client",
+    "install-all": "npm run install:server && npm run install:client",
+    "build:client": "npm run build --prefix client",
+    "build": "npm run install-all && npm run build:client",
+    "start": "node server/server.js",
+    "dev:server": "npm run dev --prefix server",
+    "dev:client": "npm run dev --prefix client"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}

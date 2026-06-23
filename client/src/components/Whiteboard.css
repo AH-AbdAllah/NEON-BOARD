@@ -1,0 +1,56 @@
+/* Whiteboard Canvas Styles */
+.whiteboard-container {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  background-color: var(--bg-primary);
+  cursor: grab;
+  transition: background-color 0.3s ease;
+}
+
+.whiteboard-container.panning {
+  cursor: grabbing;
+}
+
+/* Panning Grid Canvas */
+.whiteboard-canvas-grid {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 50000px;  /* Semi-infinite bounds */
+  height: 50000px; /* Semi-infinite bounds */
+  transform-origin: 0 0; /* Critical for wheel zoom calculations */
+  background-image: radial-gradient(var(--grid-color) 1.5px, transparent 1.5px);
+  background-color: var(--canvas-bg);
+  pointer-events: auto;
+  transition: background-color 0.3s ease;
+}
+
+/* Floating Instruction */
+.canvas-instruction {
+  position: fixed;
+  bottom: 2rem;
+  left: 2rem; /* Position on bottom left */
+  padding: 0.75rem 1.25rem;
+  border-radius: 10px;
+  font-size: 0.82rem;
+  font-weight: 500;
+  color: var(--text-secondary);
+  border: 1px solid var(--border-muted);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+  pointer-events: none;
+  z-index: 80;
+  direction: ltr; /* LTR layout */
+}
+
+.canvas-instruction::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  width: 4px;
+  background-color: var(--color-neon-green);
+  border-radius: 10px 0 0 10px;
+}

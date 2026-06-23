@@ -1,0 +1,75 @@
+/* Trash Bin Zone Styles */
+.trash-bin-container {
+  position: fixed;
+  bottom: 2rem;
+  left: 50%;
+  transform: translate(-50%, 150%);
+  width: 320px;
+  height: 64px;
+  border-radius: 32px;
+  z-index: 90;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px dashed rgba(255, 255, 255, 0.2);
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  pointer-events: none; /* Make sure it doesn't block mouse movements directly */
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+  opacity: 0;
+}
+
+.trash-bin-container.visible {
+  transform: translate(-50%, 0);
+  opacity: 1;
+}
+
+.trash-bin-container.hovered {
+  border: 1.5px solid #ef4444;
+  background-color: rgba(239, 68, 68, 0.08);
+  box-shadow: 0 0 25px rgba(239, 68, 68, 0.25), 0 10px 30px rgba(0, 0, 0, 0.6);
+  animation: trashPulse 1.5s infinite;
+}
+
+.trash-bin-content {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-family: var(--font-body);
+}
+
+.trash-icon {
+  font-size: 1.35rem;
+  transition: transform 0.2s ease;
+}
+
+.trash-bin-container.hovered .trash-icon {
+  transform: scale(1.2) rotate(5deg);
+}
+
+.trash-text {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+  transition: color 0.2s ease;
+}
+
+.trash-bin-container.hovered .trash-text {
+  color: #ef4444;
+}
+
+.trash-glow-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 32px;
+  pointer-events: none;
+  opacity: 0;
+  box-shadow: inset 0 0 15px rgba(239, 68, 68, 0.2);
+  transition: opacity 0.3s ease;
+}
+
+.trash-bin-container.hovered .trash-glow-overlay {
+  opacity: 1;
+}

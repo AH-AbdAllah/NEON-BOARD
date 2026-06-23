@@ -1,0 +1,267 @@
+/* Reset and Core Styles */
+:root {
+  /* Color System - Dark Theme (Default) */
+  --bg-primary: #050505;
+  --bg-secondary: #0c0c0e;
+  --bg-tertiary: #141418;
+  --bg-accent-glow: rgba(57, 255, 20, 0.03);
+  
+  --color-neon-green: #39ff14;
+  --color-neon-glow: rgba(57, 255, 20, 0.4);
+  --color-emerald: #10b981;
+  --color-mint: #34d399;
+  --color-forest: #065f46;
+  --color-obsidian: #1e293b;
+  --color-charcoal: #334155;
+  --color-pitch: #0f172a;
+  
+  --border-neon: rgba(57, 255, 20, 0.25);
+  --border-muted: rgba(255, 255, 255, 0.07);
+  
+  --text-primary: #f8fafc;
+  --text-secondary: #94a3b8;
+  --text-muted: #64748b;
+  --text-neon: #39ff14;
+  
+  /* Neon Pulse Variables */
+  --neon-pulse-1: rgba(57, 255, 20, 0.2);
+  --neon-pulse-2: rgba(57, 255, 20, 0.1);
+  --neon-pulse-3: rgba(57, 255, 20, 0.4);
+  --neon-pulse-4: rgba(57, 255, 20, 0.2);
+  
+  /* Grid & Canvas Config */
+  --grid-color: rgba(57, 255, 20, 0.06);
+  --canvas-bg: #050507;
+  
+  /* Fonts */
+  --font-heading: 'Outfit', sans-serif;
+  --font-body: 'Inter', sans-serif;
+  
+  --grid-size: 40px;
+}
+
+/* Light Theme Variables */
+[data-theme='light'] {
+  --bg-primary: #f8fafc;
+  --bg-secondary: #f1f5f9;
+  --bg-tertiary: #e2e8f0;
+  --bg-accent-glow: rgba(16, 185, 129, 0.02);
+  
+  --color-neon-green: #10b981; /* Deep emerald for light mode readability */
+  --color-neon-glow: rgba(16, 185, 129, 0.2);
+  --color-emerald: #059669;
+  --color-mint: #10b981;
+  --color-forest: #047857;
+  --color-obsidian: #f8fafc;
+  --color-charcoal: #cbd5e1;
+  --color-pitch: #e2e8f0;
+  
+  --border-neon: rgba(16, 185, 129, 0.3);
+  --border-muted: rgba(15, 23, 42, 0.08);
+  
+  --text-primary: #0f172a;
+  --text-secondary: #475569;
+  --text-muted: #64748b;
+  --text-neon: #059669;
+  
+  /* Neon Pulse Variables */
+  --neon-pulse-1: rgba(16, 185, 129, 0.15);
+  --neon-pulse-2: rgba(16, 185, 129, 0.05);
+  --neon-pulse-3: rgba(16, 185, 129, 0.35);
+  --neon-pulse-4: rgba(16, 185, 129, 0.15);
+  
+  --grid-color: rgba(16, 185, 129, 0.12);
+  --canvas-bg: #f8fafc;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: var(--font-body);
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  overflow: hidden;
+  height: 100vh;
+  width: 100vw;
+  user-select: none;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading);
+}
+
+/* Custom Scrollbars */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg-primary);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--bg-tertiary);
+  border-radius: 3px;
+  border: 1px solid var(--border-muted);
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-forest);
+}
+
+/* Premium Ambient Neon Animations */
+@keyframes neonPulse {
+  0%, 100% {
+    box-shadow: 0 0 10px var(--neon-pulse-1), inset 0 0 5px var(--neon-pulse-2);
+  }
+  50% {
+    box-shadow: 0 0 20px var(--neon-pulse-3), inset 0 0 10px var(--neon-pulse-4);
+  }
+}
+
+@keyframes gridGlow {
+  0%, 100% {
+    background-size: var(--grid-size) var(--grid-size);
+  }
+  50% {
+    background-size: calc(var(--grid-size) + 1px) calc(var(--grid-size) + 1px);
+  }
+}
+
+@keyframes flyInNote {
+  from {
+    opacity: 0;
+    transform: scale(0.8) translateY(-40px);
+    filter: blur(8px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+    filter: blur(0);
+  }
+}
+
+@keyframes trashPulse {
+  0%, 100% {
+    border-color: rgba(239, 68, 68, 0.4);
+    box-shadow: 0 0 15px rgba(239, 68, 68, 0.1);
+  }
+  50% {
+    border-color: rgba(239, 68, 68, 0.9);
+    box-shadow: 0 0 25px rgba(239, 68, 68, 0.3);
+  }
+}
+
+@keyframes floatParticle {
+  0% {
+    transform: translateY(0px) translateX(0px) scale(1);
+    opacity: 0.1;
+  }
+  50% {
+    opacity: 0.4;
+  }
+  100% {
+    transform: translateY(-80px) translateX(20px) scale(1.2);
+    opacity: 0;
+  }
+}
+
+/* Global Helper Classes */
+.neon-glow {
+  text-shadow: 0 0 10px var(--color-neon-glow);
+}
+
+.neon-border {
+  border: 1px solid var(--border-neon);
+  box-shadow: 0 0 15px rgba(57, 255, 20, 0.15);
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+[data-theme='light'] .neon-border {
+  box-shadow: 0 0 12px rgba(16, 185, 129, 0.12);
+}
+
+.neon-btn {
+  font-family: var(--font-heading);
+  background-color: transparent;
+  color: var(--color-neon-green);
+  border: 1.5px solid var(--color-neon-green);
+  padding: 0.75rem 1.5rem;
+  font-size: 0.95rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  text-shadow: 0 0 5px rgba(57, 255, 20, 0.15);
+  box-shadow: 0 0 10px rgba(57, 255, 20, 0.05);
+}
+
+.neon-btn:hover {
+  background-color: var(--color-neon-green);
+  color: #fff;
+  text-shadow: none;
+  box-shadow: 0 0 20px var(--color-neon-glow);
+  transform: translateY(-2px);
+}
+
+[data-theme='light'] .neon-btn:hover {
+  color: #fff;
+}
+
+.neon-btn:active {
+  transform: translateY(0);
+}
+
+.glassmorphism {
+  background: rgba(12, 12, 14, 0.65);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid var(--border-muted);
+  transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+[data-theme='light'] .glassmorphism {
+  background: rgba(255, 255, 255, 0.7);
+  border-color: var(--border-muted);
+  box-shadow: 0 8px 32px rgba(15, 23, 42, 0.05);
+}
+
+/* Global Theme Toggle Button */
+.theme-toggle-btn {
+  background-color: rgba(255, 255, 255, 0.03);
+  border: 1px solid var(--border-muted);
+  color: var(--text-secondary);
+  padding: 0.45rem 0.85rem;
+  border-radius: 8px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-family: var(--font-body);
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+}
+
+.theme-toggle-btn:hover {
+  border-color: var(--color-neon-green);
+  color: var(--color-neon-green);
+  background-color: rgba(57, 255, 20, 0.02);
+}
+
+/* Global drag/resize cursor lock rules */
+body.is-dragging-note,
+body.is-dragging-note * {
+  cursor: grabbing !important;
+}
+
+body.is-resizing-note,
+body.is-resizing-note * {
+  cursor: se-resize !important;
+}
+
+

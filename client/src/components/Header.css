@@ -1,0 +1,198 @@
+/* Board Header Styles */
+.board-header {
+  position: fixed;
+  top: 1rem;
+  left: 1rem;
+  right: 1rem;
+  height: 64px;
+  border-radius: 12px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 1.5rem;
+  z-index: 100;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+  direction: ltr; /* LTR for English interface */
+}
+
+/* Branding */
+.board-branding {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  cursor: pointer;
+}
+
+.logo-dot {
+  width: 8px;
+  height: 8px;
+  background-color: var(--color-neon-green);
+  border-radius: 50%;
+  box-shadow: 0 0 8px var(--color-neon-green);
+  animation: neonPulse 2s infinite ease-in-out;
+}
+
+.board-branding h2 {
+  font-family: var(--font-heading);
+  font-size: 1.25rem;
+  font-weight: 800;
+  color: var(--text-primary);
+  letter-spacing: 0.05em;
+}
+
+.board-branding h2 span {
+  color: var(--color-neon-green);
+}
+
+/* Status Info Section */
+.board-status-group {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.status-pill {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.35rem 0.75rem;
+  border-radius: 20px;
+  background-color: rgba(255, 255, 255, 0.03);
+  border: 1px solid var(--border-muted);
+  font-size: 0.78rem;
+  font-weight: 600;
+}
+
+.status-pill.connected {
+  border-color: rgba(57, 255, 20, 0.2);
+  background-color: rgba(57, 255, 20, 0.03);
+  color: var(--color-neon-green);
+}
+
+.status-pill.connected .status-dot {
+  background-color: var(--color-neon-green);
+  box-shadow: 0 0 6px var(--color-neon-green);
+}
+
+.status-pill.disconnected {
+  border-color: rgba(239, 68, 68, 0.2);
+  background-color: rgba(239, 68, 68, 0.03);
+  color: #ef4444;
+}
+
+.status-pill.disconnected .status-dot {
+  background-color: #ef4444;
+  box-shadow: 0 0 6px #ef4444;
+  animation: neonPulse 1s infinite;
+}
+
+.status-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+}
+
+.stats-pill, .user-pill {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.35rem 0.75rem;
+  border-radius: 20px;
+  background-color: rgba(255, 255, 255, 0.03);
+  border: 1px solid var(--border-muted);
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+}
+
+.stats-number {
+  font-weight: 700;
+  color: var(--color-neon-green);
+}
+
+.user-pill {
+  border-color: rgba(57, 255, 20, 0.15);
+  background-color: rgba(57, 255, 20, 0.02);
+}
+
+.user-nickname {
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+/* Controls */
+.board-controls-group {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.zoom-widget {
+  display: flex;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.3);
+  border: 1px solid var(--border-muted);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.zoom-btn {
+  background: transparent;
+  border: none;
+  color: var(--text-secondary);
+  font-size: 1.1rem;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.zoom-btn:hover {
+  background-color: rgba(255, 255, 255, 0.05);
+  color: var(--color-neon-green);
+}
+
+.zoom-percentage {
+  font-size: 0.8rem;
+  font-weight: 700;
+  padding: 0 0.5rem;
+  min-width: 48px;
+  text-align: center;
+  color: var(--text-primary);
+  cursor: pointer;
+}
+
+.zoom-percentage:hover {
+  color: var(--color-neon-green);
+}
+
+.reset-view-btn, .back-btn {
+  background-color: rgba(255, 255, 255, 0.03);
+  border: 1px solid var(--border-muted);
+  color: var(--text-secondary);
+  padding: 0.45rem 0.85rem;
+  border-radius: 8px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-family: var(--font-body);
+}
+
+.reset-view-btn:hover {
+  border-color: rgba(57, 255, 20, 0.2);
+  color: var(--color-neon-green);
+  background-color: rgba(57, 255, 20, 0.02);
+}
+
+.back-btn {
+  border-color: rgba(239, 68, 68, 0.15);
+}
+
+.back-btn:hover {
+  border-color: #ef4444;
+  color: #ef4444;
+  background-color: rgba(239, 68, 68, 0.05);
+}
