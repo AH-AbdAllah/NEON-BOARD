@@ -1,5 +1,7 @@
 # 🌌 NEON BOARD — Collaborative Real-Time Whiteboard
 
+🌐 **Live Demo:** [https://neon-board.onrender.com/](https://neon-board.onrender.com/)
+
 NEON BOARD is a premium, high-fidelity real-time collaborative project whiteboard. Built with a modern glassmorphic aesthetic, neon glow accents, and responsive animations, it provides a seamless visual workspace for distributed teams.
 
 The application leverages **React** and **Vite** on the frontend, powered by a **Node.js/Express** backend, and uses **Google Firestore** as its database with **Server-Sent Events (SSE)** for zero-latency, real-time collaboration without WebSockets.
